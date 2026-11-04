@@ -1,0 +1,23 @@
+# Baseline Inventory
+
+- **Repository**: `c:\Users\HP\Downloads\Portfolio 3.0` (initialized on `main` branch).
+- **Upstream / Live Reference**: `https://desktop-porfolio.netlify.app/`
+- **Framework & Runtime**: Modern Vanilla Web Platform (HTML5, Modular CSS, ES Modules) with zero bloated build step dependencies; 100% native browser support and ultra-fast static hosting on Netlify.
+- **Install & Run Commands**: 
+  - Local Dev Server: `python -m http.server 8000` or `npx serve .`
+  - Production Build: Static site deployment ready for Netlify / Vercel / GitHub Pages.
+- **Current Routes & Applications**:
+  - `/` (Desktop OS Shell)
+  - Applications: Projects (Main Drive), Systems, Journey, Achievements, Founder.txt, Whiteboard / Sticky Notes, Contact / Brief, Command Palette (`Ctrl+K`).
+- **Background & Media Asset Paths**:
+  - Baseline state from reference was a flat CSS radial gradient.
+  - New architecture upgrades to an authentic Living Pixel-Art Wallpaper with multi-layered parallax drifting clouds, distant hills, foreground pixel grass, and environmental atmospheric particles.
+- **Third-Party Embeds & Secrets**:
+  - Zero external tracking scripts or client-side secret tokens.
+  - Optional calendar integration prepared for privacy-safe URL embeds.
+- **Protected Elements**:
+  - Responsive layout reflow (desktop grid to mobile card sheet).
+  - Clean separation of UI layers (Layer 0000 Wallpaper -> 0400 Desktop Icons -> 1000 Window Chrome -> 5500 Dock -> 9000 Bootloader).
+- **Known Broken Behavior in Reference Before Upgrade**:
+  - Reference site lacked authentic moving pixel-art cloud layers, living wallpaper depth, and bespoke animated character boot sequence.
+  - All elements were purely static CSS gradients with generic block designs.

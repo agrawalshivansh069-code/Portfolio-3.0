@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 320" width="1920" height="320" shape-rendering="crispEdges">
+  <defs>
+    <style>
+      .h-far { fill: #8675A9; opacity: 0.65; }
+      .h-far-rim { fill: #BFA2DB; opacity: 0.75; }
+      .h-mid { fill: #5D5478; opacity: 0.85; }
+      .h-mid-rim { fill: #8F7CA8; opacity: 0.90; }
+      .h-near { fill: #3F3754; }
+      .h-near-rim { fill: #655882; }
+    </style>
+  </defs>
+
+  <!-- Far Layer Mountains (Highest peaks) -->
+  <g class="h-far">
+    <!-- Peak 1 (Left) -->
+    <polygon points="0,220 180,110 320,180 500,80 680,200 840,130 1020,230 1180,100 1340,190 1520,70 1700,180 1920,90 1920,320 0,320"/>
+  </g>
+  <!-- Peak rims / pixel highlights -->
+  <g class="h-far-rim">
+    <rect x="490" y="80" width="20" height="6"/>
+    <rect x="475" y="86" width="15" height="8"/>
+    <rect x="1510" y="70" width="20" height="6"/>
+    <rect x="1495" y="76" width="15" height="8"/>
+    <rect x="1170" y="100" width="20" height="6"/>
+  </g>
+
+  <!-- Mid Layer Rolling Hills -->
+  <g class="h-mid">
+    <path d="M 0,220 
+             Q 220,160 440,210 
+             Q 660,150 880,220 
+             Q 1100,160 1320,210 
+             Q 1540,150 1760,220 
+             L 1920,220 L 1920,320 L 0,320 Z"/>
+  </g>
+  <!-- Stepped pixel-art tree silhouettes on mid hills -->
+  <g class="h-mid-rim">
+    <!-- Clusters of tiny pixel pine trees -->
+    <rect x="210" y="152" width="6" height="12"/>
+    <rect x="218" y="156" width="5" height="10"/>
+    <rect x="225" y="150" width="7" height="15"/>
+    <rect x="640" y="142" width="8" height="16"/>
+    <rect x="650" y="146" width="6" height="12"/>
+    <rect x="658" y="140" width="9" height="18"/>
+    <rect x="1520" y="142" width="8" height="16"/>
+    <rect x="1530" y="146" width="6" height="12"/>
+  </g>
+
+  <!-- Near Layer Darker Hills -->
+  <g class="h-near">
+    <path d="M 0,260 
+             Q 300,200 620,260 
+             Q 940,210 1260,260 
+             Q 1580,205 1920,260 
+             L 1920,320 L 0,320 Z"/>
+  </g>
+  <g class="h-near-rim">
+    <rect x="610" y="202" width="10" height="18"/>
+    <rect x="622" y="206" width="8" height="14"/>
+    <rect x="1250" y="212" width="10" height="18"/>
+    <rect x="1570" y="208" width="10" height="16"/>
+  </g>
+</svg>

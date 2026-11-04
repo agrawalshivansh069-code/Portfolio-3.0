@@ -1,0 +1,156 @@
+/* Boot Experience Styles — Shivansh OS v2.0 */
+
+#bootScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 40%, #FFE5D9 0%, #FFCAD4 45%, #E8DFF5 100%);
+  color: #2B2D42;
+  font-family: 'DM Mono', monospace;
+  padding: 20px;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+}
+
+#bootScreen.boot-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.boot-container {
+  max-width: 540px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.88);
+  border: 2px solid #2B2D42;
+  box-shadow: 10px 10px 0 #2B2D42;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+.boot-character-wrap {
+  width: 96px;
+  height: 96px;
+  margin-bottom: 18px;
+  animation: bootBob 2.5s ease-in-out infinite alternate;
+}
+
+.boot-character-wrap img {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+@keyframes bootBob {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-6px); }
+}
+
+.boot-os-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 26px;
+  letter-spacing: -0.03em;
+  margin: 0 0 4px;
+  color: #1D1E2C;
+}
+
+.boot-os-sub {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: #6F4539;
+  text-transform: uppercase;
+  margin: 0 0 20px;
+  font-weight: 500;
+}
+
+.boot-terminal-log {
+  width: 100%;
+  background: #1D2D44;
+  color: #7EE7E2;
+  font-size: 11px;
+  line-height: 1.6;
+  text-align: left;
+  padding: 12px 14px;
+  border: 1px solid #2B2D42;
+  min-height: 78px;
+  margin-bottom: 18px;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+
+.boot-terminal-log .log-highlight {
+  color: #FFE66D;
+}
+
+.boot-progress-wrap {
+  width: 100%;
+  margin-bottom: 22px;
+}
+
+.boot-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #2B2D42;
+}
+
+.boot-progress-track {
+  width: 100%;
+  height: 12px;
+  background: #E8DFF5;
+  border: 1px solid #2B2D42;
+  padding: 1px;
+  box-sizing: border-box;
+}
+
+.boot-progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #FF9AA2, #FFB5A7, #7EE7E2);
+  transition: width 0.18s linear;
+}
+
+.boot-skip-btn {
+  background: transparent;
+  color: #2B2D42;
+  border: 1px solid #2B2D42;
+  padding: 8px 18px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: all 0.15s ease;
+}
+
+.boot-skip-btn:hover,
+.boot-skip-btn:focus-visible {
+  background: #2B2D42;
+  color: #FFF;
+  box-shadow: 3px 3px 0 #FFB5A7;
+  outline: none;
+}
+
+@media (max-width: 580px) {
+  .boot-container {
+    padding: 24px 18px;
+  }
+  .boot-os-title {
+    font-size: 22px;
+  }
+  .boot-character-wrap {
+    width: 80px;
+    height: 80px;
+  }
+}

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shivansh OS v2.0 — AI &amp; Software Developer</title>
+  <meta name="description" content="Personal AI Operating System of Shivansh Agrawal — Computer Science developer specializing in applied AI, full-stack systems, and immersive web experiences." />
+  <meta name="author" content="Shivansh Agrawal" />
+  <link rel="canonical" href="https://desktop-porfolio.netlify.app/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Shivansh OS v2.0 — AI &amp; Software Developer" />
+  <meta property="og:description" content="Explore intelligent AI systems, hackathon projects, and creative web engineering." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://desktop-porfolio.netlify.app/" />
+
+  <link rel="stylesheet" href="boot.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+
+  <!-- ==========================================
+       BOOT EXPERIENCE OVERLAY (Layer 9000)
+  =========================================== -->
+  <section id="bootScreen" aria-label="System Boot Sequence">
+    <div class="boot-container">
+      <div class="boot-character-wrap">
+        <img src="assets/portraits/boot-character.svg" alt="Shivansh Pixel Character" />
+      </div>
+      <h1 class="boot-os-title">SHIVANSH OS</h1>
+      <div class="boot-os-sub">Version 2.0.4 — Personal AI Operating System</div>
+
+      <div class="boot-terminal-log" id="bootLog" aria-live="polite">
+        <div>> <span class="log-highlight">Powering on system bus...</span></div>
+      </div>
+
+      <div class="boot-progress-wrap">
+        <div class="boot-progress-meta">
+          <span>MOUNTING DESKTOP ENVIRONMENT</span>
+          <span id="bootPercent">0%</span>
+        </div>
+        <div class="boot-progress-track">
+          <div class="boot-progress-fill" id="bootFill"></div>
+        </div>
+      </div>
+
+      <button id="skipBootBtn" class="boot-skip-btn">Skip Boot [ESC] ↵</button>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       LIVING PIXEL-ART WALLPAPER (Layer 0000)
+  =========================================== -->
+  <div id="livingWallpaper" aria-hidden="true">
+    <div class="atmospheric-orb"></div>
+    <canvas id="particleCanvas"></canvas>
+    <div class="cloud-layer far"></div>
+    <div class="cloud-layer mid"></div>
+    <div class="cloud-layer near"></div>
+    <div class="landscape-hills"></div>
+    <div class="landscape-grass"></div>
+    <div class="crt-overlay"></div>
+  </div>
+
+  <!-- ==========================================
+       SYSTEM BAR NAVIGATION (Layer 5000)
+  =========================================== -->
+  <header id="systemNav" role="banner">
+    <div class="nav-brand">
+      <img src="assets/companion/companion-idle.svg" alt="" class="brand-sprite" />
+      <span class="brand-title">SHIVANSH OS</span>
+      <span class="brand-badge">v2.0</span>
+    </div>
+
+    <div class="nav-center">
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        <span>SYSTEM ONLINE</span>
+      </div>
+      <div class="status-pill">
+        <span>📍 NAGPUR, IN</span>
+      </div>
+    </div>
+
+    <div class="nav-controls">
+      <button class="nav-btn" id="commandPaletteBtn" title="Launch Command Palette (Ctrl+K)">
+        <span>🔍 SEARCH</span>
+        <kbd style="font-size:9px;opacity:0.6;background:rgba(0,0,0,0.1);padding:1px 4px;border-radius:2px;">^K</kbd>
+      </button>
+      <button class="nav-btn" id="themeToggleBtn" title="Toggle Theme (Day / Night / Dark)">☀️ DAY</button>
+      <button class="nav-btn" id="audioToggleBtn" title="Toggle Sound Effects">🔇 SFX OFF</button>
+      <div class="clock-display" id="systemClock">IST --:--:--</div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       DESKTOP WORKSPACE (Layer 0300 - 0500)
+  =========================================== -->
+  <main id="desktopShell">
+    
+    <!-- Column 1: Daily Transmission -->
+    <section class="os-panel desktop-transmission">
+      <div class="panel-eyebrow">
+        <span>📡</span>
+        <span>DAILY TRANSMISSION</span>
+      </div>
+      <p class="transmission-text">
+        "Iteration outperforms speculation. Build the prototype, test the edge case, ship the proof."
+      </p>
+      <div class="transmission-meta">DISPATCH #042 // NAGPUR DEV LAB</div>
+      <button class="quick-sticky-btn" data-open-app="whiteboard">Add a Quick Sticky ✍</button>
+    </section>
+
+    <!-- Column 2: Identity Hero Block -->
+    <section class="desktop-hero">
+      <div class="hero-roles">AI &amp; ML DEVELOPER // FULL-STACK // CREATIVE WEB</div>
+      <h1 class="hero-name">SHIVANSH AGRAWAL</h1>
+      <div id="heroMorphTag" class="hero-morph-tag">[ AI SYSTEMS OPERATOR ]</div>
+      <p class="hero-intro">
+        Building intelligent digital experiences through AI, software engineering, automation and creative web development.
+      </p>
+      <div class="hero-actions">
+        <button class="primary-btn" data-open-app="projects">
+          Explore My Projects <span>→</span>
+        </button>
+        <button class="secondary-btn" data-open-app="contact">
+          Contact Me
+        </button>
+        <a href="https://github.com/agrawalshivansh069-code" target="_blank" rel="noopener noreferrer" class="outline-btn">
+          GitHub Profile ↗
+        </a>
+      </div>
+    </section>
+
+    <!-- Column 3: Status & Credentials Overview -->
+    <section class="os-panel desktop-credentials">
+      <div class="panel-eyebrow">
+        <span>🏆</span>
+        <span>VERIFIED CREDENTIALS</span>
+      </div>
+      <div class="credential-item">
+        <div class="credential-title">Smart India Hackathon</div>
+        <p class="credential-desc">National competitor (2025–2026), developed full solution for PS SIH26135.</p>
+      </div>
+      <div class="credential-item">
+        <div class="credential-title">Economic Times AI Hackathon</div>
+        <p class="credential-desc">Round 2 Qualifier in competitive applied generative AI challenge.</p>
+      </div>
+      <div class="credential-item">
+        <div class="credential-title">GFG ByteQuest 2026</div>
+        <p class="credential-desc">Algorithmic and data structure problem solving participant.</p>
+      </div>
+    </section>
+
+    <!-- Desktop Icons Grid (Layer 0400) -->
+    <nav class="desktop-app-grid" aria-label="Desktop Applications">
+      <button class="desktop-app-item" data-open-app="projects" title="Open Projects">
+        <div class="app-icon-wrap">
+          <img src="assets/icons/app-projects.svg" alt="" />
+        </div>
+        <span class="app-label">Projects</span>
+        <span class="app-sub">Main Drive</span>
+      </button>
+
+      <button class="desktop-app-item" data-open-app="systems" title="Open Systems Architecture">
+        <div class="app-icon-wrap">
+          <img src="assets/icons/app-systems.svg" alt="" />
+        </div>
+        <span class="app-label">Systems</span>
+        <span class="app-sub">Engineering Loop</span>
+      </button>
+
+      <button class="desktop-app-item" data-open-app="journey" title="Open Journey Timeline">
+        <div class="app-icon-wrap">
+          <img src="assets/icons/app-journey.svg" alt="" />
+        </div>
+        <span class="app-label">Journey</span>
+        <span class="app-sub">2024 – 2026</span>
+      </button>
+
+      <button class="desktop-app-item" data-open-app="achievements" title="Open Achievements Vault">
+        <div class="app-icon-wrap">
+          <img src="assets/icons/app-achievements.svg" alt="" />
+        </div>
+        <span class="app-label">Achievements</span>
+        <span class="app-sub">Hackathons</span>
+      </button>
+
+      <button class="desktop-app-item" data-open-app="founder" title="Open Founder.txt">
+        <div class="app-icon-wrap">
+          <img src="assets/icons/app-founder.svg" alt="" />
+        </div>
+        <span class="app-label">Founder.txt</span>
+        <span class="app-sub">Developer Log</span>
+      </button>
+
+      <button class="desktop-app-item" data-open-app="whiteboard" title="Open Whiteboard">
+        <div class="app-icon-wrap">
+          <img src="assets/icons/app-whiteboard.svg" alt="" />
+        </div>
+        <span class="app-label">Whiteboard</span>
+        <span class="app-sub">Sticky Notes</span>
+      </button>
+
+      <button class="desktop-app-item" data-open-app="terminal" title="Open Terminal">
+        <div class="app-icon-wrap">
+          <img src="assets/icons/app-terminal.svg" alt="" />
+        </div>
+        <span class="app-label">Terminal</span>
+        <span class="app-sub">Diagnostics</span>
+      </button>
+
+      <button class="desktop-app-item" data-open-app="contact" title="Open Contact Brief">
+        <div class="app-icon-wrap">
+          <img src="assets/icons/app-contact.svg" alt="" />
+        </div>
+        <span class="app-label">Contact</span>
+        <span class="app-sub">Direct Brief</span>
+      </button>
+    </nav>
+
+  </main>
+
+  <!-- ==========================================
+       BOTTOM-LEFT AI COMPANION (Layer 5700)
+  =========================================== -->
+  <aside id="aiCompanion" aria-label="Shivansh AI Companion">
+    <div class="companion-body" id="companionDraggable" title="Drag me around or click to change mood!">
+      <img id="companionSprite" src="assets/companion/companion-idle.svg" alt="Shivansh Developer Companion" />
+      <div class="companion-controls">
+        <button id="companionMoodBtn" class="companion-mini-btn" title="Cycle mood">★</button>
+        <button id="companionResetBtn" class="companion-mini-btn" title="Reset position">⟲</button>
+      </div>
+    </div>
+
+    <div class="companion-bubble" id="companionBubble">
+      <button id="companionBubbleClose" class="companion-bubble-close" aria-label="Dismiss">×</button>
+      <span class="bubble-tag">BUILDER NOTICE</span>
+      Operating in high-agency developer mode. Exploring applied multi-modal AI &amp; national hackathons.
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       FOLDED-CORNER CALL TAB (Layer 5600)
+  =========================================== -->
+  <div id="foldedCorner" data-open-app="contact" title="Book or Connect with Shivansh">
+    <div class="fold-triangle">
+      <div class="fold-inner">
+        Want this?
+        <strong>Connect →</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       BOTTOM DOCK (Layer 5500)
+  =========================================== -->
+  <nav id="systemDock" aria-label="System Dock">
+    <button class="dock-item" data-open-app="projects" title="Projects (Main Drive)">
+      <img src="assets/icons/app-projects.svg" alt="" />
+      <span class="dock-tooltip">Projects</span>
+      <span class="dock-dot"></span>
+    </button>
+
+    <button class="dock-item" data-open-app="systems" title="Systems Loop">
+      <img src="assets/icons/app-systems.svg" alt="" />
+      <span class="dock-tooltip">Systems</span>
+      <span class="dock-dot"></span>
+    </button>
+
+    <button class="dock-item" data-open-app="journey" title="Journey">
+      <img src="assets/icons/app-journey.svg" alt="" />
+      <span class="dock-tooltip">Journey</span>
+      <span class="dock-dot"></span>
+    </button>
+
+    <button class="dock-item" data-open-app="achievements" title="Achievements">
+      <img src="assets/icons/app-achievements.svg" alt="" />
+      <span class="dock-tooltip">Achievements</span>
+      <span class="dock-dot"></span>
+    </button>
+
+    <div class="dock-separator"></div>
+
+    <button class="dock-item" data-open-app="founder" title="Founder.txt">
+      <img src="assets/icons/app-founder.svg" alt="" />
+      <span class="dock-tooltip">Founder.txt</span>
+      <span class="dock-dot"></span>
+    </button>
+
+    <button class="dock-item" data-open-app="whiteboard" title="Sticky Notes">
+      <img src="assets/icons/app-whiteboard.svg" alt="" />
+      <span class="dock-tooltip">Whiteboard</span>
+      <span class="dock-dot"></span>
+    </button>
+
+    <button class="dock-item" data-open-app="terminal" title="Terminal">
+      <img src="assets/icons/app-terminal.svg" alt="" />
+      <span class="dock-tooltip">Terminal</span>
+      <span class="dock-dot"></span>
+    </button>
+
+    <button class="dock-item" data-open-app="contact" title="Contact & Brief">
+      <img src="assets/icons/app-contact.svg" alt="" />
+      <span class="dock-tooltip">Contact</span>
+      <span class="dock-dot"></span>
+    </button>
+  </nav>
+
+  <!-- ==========================================
+       WINDOW MANAGER LAYER (Layer 1000 - 4500)
+  =========================================== -->
+  <div id="windowLayer">
+
+    <!-- 1. PROJECTS WINDOW -->
+    <div class="os-window" id="win-projects" style="display:none;width:760px;height:540px;" hidden>
+      <div class="window-titlebar">
+        <div class="window-title-group">
+          <img src="assets/icons/app-projects.svg" width="16" height="16" alt="" />
+          <span>Projects — Main Drive (Selected Work)</span>
+        </div>
+        <div class="window-controls">
+          <button class="win-btn minimize" aria-label="Minimize"></button>
+          <button class="win-btn maximize" aria-label="Maximize"></button>
+          <button class="win-btn close" aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-content">
+        <div style="margin-bottom:18px">
+          <h2 style="font-size:20px;margin:0 0 4px">Production Projects &amp; Verified Case Files</h2>
+          <p style="font-size:13px;color:gray;margin:0">Full-stack systems, multi-modal Gemini AI applications, and national hackathon solutions.</p>
+        </div>
+        <div class="project-card-grid" id="projectListGrid">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. SYSTEMS WINDOW -->
+    <div class="os-window" id="win-systems" style="display:none;width:660px;height:480px;" hidden>
+      <div class="window-titlebar">
+        <div class="window-title-group">
+          <img src="assets/icons/app-systems.svg" width="16" height="16" alt="" />
+          <span>Systems — Engineering &amp; Operating Methodology</span>
+        </div>
+        <div class="window-controls">
+          <button class="win-btn minimize" aria-label="Minimize"></button>
+          <button class="win-btn maximize" aria-label="Maximize"></button>
+          <button class="win-btn close" aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-content">
+        <h2 style="font-size:18px;margin:0 0 16px">The 5-Step Operating Loop</h2>
+        <div class="system-loop">
+          <div class="loop-step">
+            <h4>01. Find the Leverage</h4>
+            <p style="font-size:13px;margin:0">Identify the highest-impact bottleneck where modern AI or clean frontend architecture drastically reduces friction.</p>
+          </div>
+          <div class="loop-step">
+            <h4>02. Lock the Architecture</h4>
+            <p style="font-size:13px;margin:0">Establish robust data contracts, component separation, and API interfaces before generating lines of implementation code.</p>
+          </div>
+          <div class="loop-step">
+            <h4>03. Build the Sharp Edge</h4>
+            <p style="font-size:13px;margin:0">Engineer the core differentiator: multi-modal AI pipelines, real-time sensory perception, or fluid 60fps canvas animations.</p>
+          </div>
+          <div class="loop-step">
+            <h4>04. Integrate &amp; Stress Test</h4>
+            <p style="font-size:13px;margin:0">Rigorously test across viewports, latency thresholds, and edge-case inputs to eliminate silent runtime failures.</p>
+          </div>
+          <div class="loop-step">
+            <h4>05. Prove &amp; Ship</h4>
+            <p style="font-size:13px;margin:0">Deploy to production, verify live endpoints, publish transparent metrics, and document for maintainability.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. JOURNEY WINDOW -->
+    <div class="os-window" id="win-journey" style="display:none;width:640px;height:480px;" hidden>
+      <div class="window-titlebar">
+        <div class="window-title-group">
+          <img src="assets/icons/app-journey.svg" width="16" height="16" alt="" />
+          <span>Journey — Milestones &amp; Evolution</span>
+        </div>
+        <div class="window-controls">
+          <button class="win-btn minimize" aria-label="Minimize"></button>
+          <button class="win-btn maximize" aria-label="Maximize"></button>
+          <button class="win-btn close" aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-content">
+        <h2 style="font-size:18px;margin:0 0 16px">Chronological Development Path</h2>
+        <div class="system-loop" id="journeyTimelineWrap">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. ACHIEVEMENTS WINDOW -->
+    <div class="os-window" id="win-achievements" style="display:none;width:640px;height:480px;" hidden>
+      <div class="window-titlebar">
+        <div class="window-title-group">
+          <img src="assets/icons/app-achievements.svg" width="16" height="16" alt="" />
+          <span>Achievements — Hackathons &amp; Credentials</span>
+        </div>
+        <div class="window-controls">
+          <button class="win-btn minimize" aria-label="Minimize"></button>
+          <button class="win-btn maximize" aria-label="Maximize"></button>
+          <button class="win-btn close" aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-content">
+        <h2 style="font-size:18px;margin:0 0 16px">Verified Competition Milestones</h2>
+        <div class="project-card-grid" id="achieveListGrid">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. FOUNDER.TXT WINDOW -->
+    <div class="os-window" id="win-founder" style="display:none;width:620px;height:480px;" hidden>
+      <div class="window-titlebar">
+        <div class="window-title-group">
+          <img src="assets/icons/app-founder.svg" width="16" height="16" alt="" />
+          <span>Founder.txt — Developer Log</span>
+        </div>
+        <div class="window-controls">
+          <button class="win-btn minimize" aria-label="Minimize"></button>
+          <button class="win-btn maximize" aria-label="Maximize"></button>
+          <button class="win-btn close" aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-content">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--line);">
+          <img src="assets/portraits/shivansh-portrait.svg" width="56" height="56" alt="Shivansh Agrawal" style="border-radius:4px;" />
+          <div>
+            <div style="font-weight:700;font-size:16px">Shivansh Agrawal</div>
+            <div style="font-size:12px;font-family:'DM Mono',monospace;color:gray">Nagpur, India // Computer Science &amp; Engineering</div>
+          </div>
+        </div>
+        <pre id="founderTxtContent" style="white-space:pre-wrap;font-family:'DM Mono',monospace;font-size:12px;line-height:1.65;color:var(--ink);margin:0;"></pre>
+      </div>
+    </div>
+
+    <!-- 6. WHITEBOARD WINDOW -->
+    <div class="os-window" id="win-whiteboard" style="display:none;width:660px;height:480px;" hidden>
+      <div class="window-titlebar">
+        <div class="window-title-group">
+          <img src="assets/icons/app-whiteboard.svg" width="16" height="16" alt="" />
+          <span>Whiteboard — Sticky Notes Canvas</span>
+        </div>
+        <div class="window-controls">
+          <button class="win-btn minimize" aria-label="Minimize"></button>
+          <button class="win-btn maximize" aria-label="Maximize"></button>
+          <button class="win-btn close" aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-content">
+        <div class="whiteboard-controls">
+          <input type="text" id="stickyInput" class="sticky-input" placeholder="Type a thought, task, or note..." maxlength="140" />
+          <button id="addStickyBtn" class="primary-btn" style="padding:8px 14px;font-size:12px;">Add Sticky</button>
+          <button id="clearStickyBtn" class="outline-btn" style="padding:8px 10px;font-size:11px;">Clear</button>
+        </div>
+        <div class="sticky-grid" id="stickyGrid">
+          <!-- Populated by app.js -->
+        </div>
+        <div style="font-size:11px;font-family:'DM Mono',monospace;color:gray;margin-top:14px;">
+          Note: Sticky notes are saved locally to your browser via localStorage.
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. TERMINAL WINDOW -->
+    <div class="os-window" id="win-terminal" style="display:none;width:580px;height:420px;" hidden>
+      <div class="window-titlebar">
+        <div class="window-title-group">
+          <img src="assets/icons/app-terminal.svg" width="16" height="16" alt="" />
+          <span>Terminal — System Diagnostics</span>
+        </div>
+        <div class="window-controls">
+          <button class="win-btn minimize" aria-label="Minimize"></button>
+          <button class="win-btn maximize" aria-label="Maximize"></button>
+          <button class="win-btn close" aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-content" style="background:#10131A;padding:16px;">
+        <div class="terminal-console">
+          <div><span class="term-lime">shivansh@os-nagpur</span>:<span class="term-gold">~</span>$ uname -a</div>
+          <div>ShivanshOS 2.0.4 WebAssembly-SMP PREEMPT x86_64 GNU/Linux</div>
+          <br>
+          <div><span class="term-lime">shivansh@os-nagpur</span>:<span class="term-gold">~</span>$ shivansh --status</div>
+          <div>• Role: AI &amp; Full-Stack Software Developer</div>
+          <div>• Location: Nagpur, Maharashtra, India</div>
+          <div>• Primary AI Framework: Google Gemini / Multi-Modal Pipelines</div>
+          <div>• Hackathons: Smart India Hackathon (SIH 2025/26), ET AI Hackathon (R2), GFG ByteQuest</div>
+          <div>• Wallpaper Engine: Triple-layered parallax pixel-art sunset</div>
+          <div>• Memory State: 100% operational | Zero memory leaks</div>
+          <br>
+          <div><span class="term-lime">shivansh@os-nagpur</span>:<span class="term-gold">~</span>$ <span class="term-gold">echo "Ready to collaborate."</span></div>
+          <div>Ready to collaborate.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. CONTACT WINDOW -->
+    <div class="os-window" id="win-contact" style="display:none;width:600px;height:520px;" hidden>
+      <div class="window-titlebar">
+        <div class="window-title-group">
+          <img src="assets/icons/app-contact.svg" width="16" height="16" alt="" />
+          <span>Contact &amp; Project Brief</span>
+        </div>
+        <div class="window-controls">
+          <button class="win-btn minimize" aria-label="Minimize"></button>
+          <button class="win-btn maximize" aria-label="Maximize"></button>
+          <button class="win-btn close" aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-content">
+        <h2 style="font-size:18px;margin:0 0 6px">Let's Build Something Intelligent</h2>
+        <p style="font-size:13px;color:gray;margin:0 0 18px">Reach out for projects, hackathons, engineering roles, or ambitious software collaborations.</p>
+
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! Your message has been composed. Shivansh will be in touch shortly.');">
+          <div class="form-group">
+            <label for="contactName">Your Name</label>
+            <input type="text" id="contactName" class="form-input" required placeholder="Alex Mercer" />
+          </div>
+
+          <div class="form-group">
+            <label for="contactEmail">Email Address</label>
+            <input type="email" id="contactEmail" class="form-input" required placeholder="alex@company.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="contactMessage">Project Scope / Message</label>
+            <textarea id="contactMessage" class="form-textarea" required placeholder="Tell me about what you are building, the problem space, or your team..."></textarea>
+          </div>
+
+          <div style="display:flex;gap:10px;align-items:center;">
+            <button type="submit" class="primary-btn">Send Message ✉</button>
+            <a href="mailto:agrawalshivansh069@gmail.com" class="outline-btn">Direct Email ↗</a>
+            <a href="https://github.com/agrawalshivansh069-code" target="_blank" rel="noopener noreferrer" class="outline-btn">GitHub ↗</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ==========================================
+       COMMAND PALETTE (Layer 5400)
+  =========================================== -->
+  <div id="commandPalette" role="dialog" aria-modal="true" aria-label="Command Palette">
+    <div class="palette-box">
+      <div class="palette-input-wrap">
+        <input type="text" id="paletteInput" class="palette-input" placeholder="Type a command, project, or app name..." autocomplete="off" />
+      </div>
+      <div class="palette-results" id="paletteResults">
+        <!-- Filtered commands rendered here -->
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

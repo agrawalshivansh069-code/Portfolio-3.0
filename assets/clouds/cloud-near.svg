@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 320" width="1920" height="320" shape-rendering="crispEdges">
+  <defs>
+    <style>
+      .n-rim { fill: #FFF5EB; opacity: 0.98; }
+      .n-gold { fill: #FEC89A; opacity: 0.95; }
+      .n-pink { fill: #FF9AA2; opacity: 0.92; }
+      .n-rose { fill: #E8A598; opacity: 0.88; }
+      .n-lavender { fill: #B5A2D8; opacity: 0.80; }
+      .n-indigo { fill: #7B6D9E; opacity: 0.70; }
+    </style>
+  </defs>
+
+  <!-- Big sweeping foreground cloud cluster (Left) -->
+  <g transform="translate(-40, 40)">
+    <rect x="0" y="190" width="600" height="50" class="n-indigo"/>
+    <rect x="0" y="150" width="580" height="45" class="n-lavender"/>
+    <rect x="0" y="115" width="540" height="40" class="n-rose"/>
+    <rect x="0" y="75" width="490" height="45" class="n-pink"/>
+
+    <!-- Puffs -->
+    <rect x="60" y="40" width="200" height="40" class="n-gold"/>
+    <rect x="90" y="15" width="140" height="30" class="n-rim"/>
+    <rect x="120" y="0" width="80" height="18" class="n-rim"/>
+
+    <rect x="250" y="45" width="180" height="35" class="n-gold"/>
+    <rect x="280" y="20" width="120" height="30" class="n-rim"/>
+
+    <rect x="420" y="60" width="120" height="35" class="n-gold"/>
+    <rect x="440" y="40" width="80" height="25" class="n-rim"/>
+  </g>
+
+  <!-- Sweeping foreground cluster (Right) -->
+  <g transform="translate(1050, 50)">
+    <rect x="50" y="180" width="680" height="55" class="n-indigo"/>
+    <rect x="30" y="140" width="650" height="45" class="n-lavender"/>
+    <rect x="20" y="105" width="620" height="40" class="n-rose"/>
+    <rect x="10" y="70" width="570" height="40" class="n-pink"/>
+
+    <rect x="80" y="35" width="220" height="40" class="n-gold"/>
+    <rect x="110" y="10" width="160" height="30" class="n-rim"/>
+    <rect x="140" y="0" width="100" height="15" class="n-rim"/>
+
+    <rect x="290" y="40" width="180" height="35" class="n-gold"/>
+    <rect x="320" y="18" width="120" height="26" class="n-rim"/>
+
+    <rect x="460" y="55" width="140" height="30" class="n-gold"/>
+    <rect x="490" y="35" width="80" height="24" class="n-rim"/>
+  </g>
+</svg>

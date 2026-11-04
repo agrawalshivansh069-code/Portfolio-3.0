@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 260" width="1920" height="260" shape-rendering="crispEdges">
+  <defs>
+    <style>
+      .m-highlight { fill: #FFF0F5; opacity: 0.95; }
+      .m-body { fill: #FFCAD4; opacity: 0.88; }
+      .m-peach { fill: #FFB5A7; opacity: 0.85; }
+      .m-apricot { fill: #FEC89A; opacity: 0.80; }
+      .m-shade { fill: #C8B3FF; opacity: 0.70; }
+      .m-deep { fill: #9D81BA; opacity: 0.60; }
+    </style>
+  </defs>
+
+  <!-- Big Cloud 1 (Left-Center) -->
+  <g transform="translate(180, 20)">
+    <!-- Deep bottom edge -->
+    <rect x="30" y="140" width="360" height="25" class="m-deep"/>
+    <rect x="10" y="120" width="410" height="25" class="m-shade"/>
+    <rect x="0" y="95" width="440" height="30" class="m-apricot"/>
+    <!-- Stepped puffs -->
+    <rect x="30" y="65" width="160" height="35" class="m-peach"/>
+    <rect x="50" y="40" width="120" height="30" class="m-body"/>
+    <rect x="70" y="20" width="80" height="25" class="m-highlight"/>
+    
+    <!-- Center highest dome -->
+    <rect x="170" y="55" width="180" height="45" class="m-peach"/>
+    <rect x="190" y="30" width="140" height="30" class="m-body"/>
+    <rect x="210" y="10" width="100" height="25" class="m-highlight"/>
+    <rect x="230" y="0" width="60" height="15" class="m-highlight"/>
+
+    <!-- Right puff -->
+    <rect x="320" y="70" width="130" height="30" class="m-peach"/>
+    <rect x="340" y="50" width="90" height="25" class="m-body"/>
+    <rect x="360" y="35" width="50" height="20" class="m-highlight"/>
+  </g>
+
+  <!-- Cloud 2 (Center-Right Drift) -->
+  <g transform="translate(860, 45)">
+    <rect x="40" y="125" width="310" height="22" class="m-deep"/>
+    <rect x="20" y="105" width="350" height="24" class="m-shade"/>
+    <rect x="0" y="80" width="390" height="28" class="m-apricot"/>
+    
+    <rect x="40" y="55" width="130" height="30" class="m-peach"/>
+    <rect x="60" y="35" width="90" height="24" class="m-body"/>
+    <rect x="80" y="18" width="50" height="20" class="m-highlight"/>
+
+    <rect x="150" y="45" width="150" height="40" class="m-peach"/>
+    <rect x="170" y="25" width="110" height="25" class="m-body"/>
+    <rect x="190" y="8" width="70" height="20" class="m-highlight"/>
+
+    <rect x="280" y="60" width="100" height="25" class="m-peach"/>
+    <rect x="300" y="45" width="60" height="20" class="m-body"/>
+  </g>
+
+  <!-- Cloud 3 (Right edge / wrap to left) -->
+  <g transform="translate(1480, 30)">
+    <rect x="30" y="130" width="330" height="25" class="m-deep"/>
+    <rect x="10" y="110" width="370" height="25" class="m-shade"/>
+    <rect x="0" y="85" width="400" height="30" class="m-apricot"/>
+    
+    <rect x="40" y="55" width="150" height="35" class="m-peach"/>
+    <rect x="60" y="35" width="110" height="25" class="m-body"/>
+    <rect x="80" y="15" width="70" height="22" class="m-highlight"/>
+
+    <rect x="180" y="50" width="140" height="40" class="m-peach"/>
+    <rect x="200" y="25" width="100" height="30" class="m-body"/>
+    <rect x="220" y="5" width="60" height="22" class="m-highlight"/>
+  </g>
+</svg>

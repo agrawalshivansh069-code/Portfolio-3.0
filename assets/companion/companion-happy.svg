@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" shape-rendering="crispEdges">
+  <defs>
+    <style>
+      .c-hair { fill: #2B2D42; }
+      .c-skin { fill: #FFDFC4; }
+      .c-shadow { fill: #F0B892; }
+      .c-hoodie { fill: #8D5B4C; }
+      .c-hoodie-trim { fill: #D68C72; }
+      .c-pant { fill: #1D2D44; }
+      .c-shoe { fill: #F4A261; }
+      .c-eye { fill: #1E1B18; }
+      .c-sparkle { fill: #FFFFFF; }
+      .c-blush { fill: #FF477E; opacity: 0.85; }
+    </style>
+  </defs>
+
+  <!-- Hair / Head Base -->
+  <rect x="20" y="8" width="24" height="6" class="c-hair"/>
+  <rect x="16" y="14" width="32" height="8" class="c-hair"/>
+  <rect x="14" y="22" width="6" height="12" class="c-hair"/>
+  <rect x="44" y="22" width="6" height="12" class="c-hair"/>
+  <rect x="20" y="14" width="6" height="8" class="c-hair"/>
+  <rect x="38" y="14" width="6" height="6" class="c-hair"/>
+
+  <!-- Face -->
+  <rect x="20" y="20" width="24" height="14" class="c-skin"/>
+  <rect x="22" y="34" width="20" height="4" class="c-shadow"/>
+
+  <!-- Happy Curved Eyes (^_^ arc) -->
+  <rect x="23" y="26" width="6" height="2" class="c-eye"/>
+  <rect x="22" y="27" width="2" height="3" class="c-eye"/>
+  <rect x="28" y="27" width="2" height="3" class="c-eye"/>
+
+  <rect x="35" y="26" width="6" height="2" class="c-eye"/>
+  <rect x="34" y="27" width="2" height="3" class="c-eye"/>
+  <rect x="40" y="27" width="2" height="3" class="c-eye"/>
+
+  <!-- Prominent Pink Blushing cheeks -->
+  <rect x="20" y="29" width="5" height="3" class="c-blush"/>
+  <rect x="39" y="29" width="5" height="3" class="c-blush"/>
+
+  <!-- Open happy mouth -->
+  <rect x="29" y="31" width="6" height="3" class="c-eye"/>
+  <rect x="30" y="32" width="4" height="2" class="c-blush"/>
+
+  <!-- Developer Headset -->
+  <rect x="12" y="24" width="4" height="8" class="c-hoodie-trim"/>
+  <rect x="48" y="24" width="4" height="8" class="c-hoodie-trim"/>
+  <rect x="16" y="8" width="32" height="2" class="c-hoodie-trim"/>
+
+  <!-- Hoodie Body (Slightly tilted cheerful pose) -->
+  <rect x="18" y="38" width="28" height="14" class="c-hoodie"/>
+  <rect x="28" y="38" width="8" height="14" class="c-hoodie-trim"/>
+  
+  <!-- Arms gesturing cheerfully -->
+  <rect x="12" y="38" width="6" height="4" class="c-hoodie"/>
+  <rect x="10" y="36" width="4" height="4" class="c-skin"/>
+  <rect x="46" y="38" width="6" height="4" class="c-hoodie"/>
+  <rect x="50" y="36" width="4" height="4" class="c-skin"/>
+
+  <!-- Pants -->
+  <rect x="22" y="52" width="8" height="6" class="c-pant"/>
+  <rect x="34" y="52" width="8" height="6" class="c-pant"/>
+
+  <!-- Shoes -->
+  <rect x="19" y="58" width="10" height="4" class="c-shoe"/>
+  <rect x="35" y="58" width="10" height="4" class="c-shoe"/>
+</svg>

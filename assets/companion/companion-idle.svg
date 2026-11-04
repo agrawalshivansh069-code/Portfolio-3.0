@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" shape-rendering="crispEdges">
+  <defs>
+    <style>
+      .c-hair { fill: #2B2D42; }
+      .c-skin { fill: #FFDFC4; }
+      .c-shadow { fill: #F0B892; }
+      .c-hoodie { fill: #8D5B4C; }
+      .c-hoodie-trim { fill: #D68C72; }
+      .c-pant { fill: #1D2D44; }
+      .c-shoe { fill: #F4A261; }
+      .c-eye { fill: #1E1B18; }
+      .c-sparkle { fill: #FFFFFF; }
+      .c-blush { fill: #FF85A1; opacity: 0.65; }
+    </style>
+  </defs>
+
+  <!-- Hair / Head Base -->
+  <rect x="20" y="8" width="24" height="6" class="c-hair"/>
+  <rect x="16" y="14" width="32" height="8" class="c-hair"/>
+  <rect x="14" y="22" width="6" height="12" class="c-hair"/>
+  <rect x="44" y="22" width="6" height="12" class="c-hair"/>
+  <!-- Front fringe bangs -->
+  <rect x="20" y="14" width="6" height="8" class="c-hair"/>
+  <rect x="38" y="14" width="6" height="6" class="c-hair"/>
+
+  <!-- Face -->
+  <rect x="20" y="20" width="24" height="14" class="c-skin"/>
+  <rect x="22" y="34" width="20" height="4" class="c-shadow"/>
+
+  <!-- Eyes (Big cute pixel eyes) -->
+  <rect x="24" y="24" width="4" height="6" class="c-eye"/>
+  <rect x="24" y="24" width="2" height="2" class="c-sparkle"/>
+  <rect x="36" y="24" width="4" height="6" class="c-eye"/>
+  <rect x="36" y="24" width="2" height="2" class="c-sparkle"/>
+
+  <!-- Blushing cheeks -->
+  <rect x="21" y="28" width="3" height="2" class="c-blush"/>
+  <rect x="40" y="28" width="3" height="2" class="c-blush"/>
+
+  <!-- Tiny smile -->
+  <rect x="30" y="31" width="4" height="1" class="c-eye"/>
+
+  <!-- Developer Headset / Earmuffs -->
+  <rect x="12" y="24" width="4" height="8" class="c-hoodie-trim"/>
+  <rect x="48" y="24" width="4" height="8" class="c-hoodie-trim"/>
+  <rect x="16" y="8" width="32" height="2" class="c-hoodie-trim"/>
+
+  <!-- Hoodie Body -->
+  <rect x="18" y="38" width="28" height="14" class="c-hoodie"/>
+  <rect x="28" y="38" width="8" height="14" class="c-hoodie-trim"/>
+  <!-- Tiny arms at sides -->
+  <rect x="14" y="40" width="4" height="8" class="c-hoodie"/>
+  <rect x="46" y="40" width="4" height="8" class="c-hoodie"/>
+  <rect x="14" y="48" width="4" height="3" class="c-skin"/>
+  <rect x="46" y="48" width="4" height="3" class="c-skin"/>
+
+  <!-- Pants -->
+  <rect x="22" y="52" width="8" height="6" class="c-pant"/>
+  <rect x="34" y="52" width="8" height="6" class="c-pant"/>
+
+  <!-- Shoes -->
+  <rect x="20" y="58" width="10" height="4" class="c-shoe"/>
+  <rect x="34" y="58" width="10" height="4" class="c-shoe"/>
+</svg>

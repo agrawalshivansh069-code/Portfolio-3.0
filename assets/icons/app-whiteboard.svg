@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" shape-rendering="crispEdges">
+  <!-- Pixel Yellow Sticky Note -->
+  <!-- Shadow -->
+  <rect x="12" y="10" width="30" height="30" fill="#E8B490" opacity="0.5"/>
+  <!-- Sticky Note Body -->
+  <rect x="8" y="8" width="30" height="30" fill="#FFE66D"/>
+  <!-- Folded corner bottom-right -->
+  <polygon points="32,38 38,32 32,32" fill="#E0C34B"/>
+  <rect x="8" y="8" width="30" height="4" fill="#FFD166"/>
+
+  <!-- Red Push Pin -->
+  <rect x="21" y="4" width="6" height="4" fill="#FF5E7E"/>
+  <rect x="23" y="8" width="2" height="4" fill="#B24933"/>
+
+  <!-- Scribbled notes -->
+  <rect x="14" y="18" width="16" height="2" fill="#5D5478"/>
+  <rect x="14" y="24" width="12" height="2" fill="#5D5478"/>
+</svg>

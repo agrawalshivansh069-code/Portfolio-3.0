@@ -99,20 +99,50 @@
   =========================================== -->
   <main id="desktopShell">
     
-    <!-- Column 1: Daily Transmission -->
-    <section class="os-panel desktop-transmission">
-      <div class="panel-eyebrow">
-        <span>📡</span>
-        <span>DAILY TRANSMISSION</span>
+    <!-- Left Column: Desktop Application Icons (Vertical alignment) -->
+    <aside class="desktop-icons-col" id="desktopIconsCol" aria-label="Desktop Application Icons">
+      <div class="desktop-icon" data-app="projects" tabindex="0" role="button" title="Double-click to open Projects (Main Drive)">
+        <img src="assets/icons/app-projects.svg" class="desktop-icon-img" alt="" />
+        <span class="desktop-icon-label">Projects</span>
       </div>
-      <p class="transmission-text">
-        "Iteration outperforms speculation. Build the prototype, test the edge case, ship the proof."
-      </p>
-      <div class="transmission-meta">DISPATCH #042 // NAGPUR DEV LAB</div>
-      <button class="quick-sticky-btn" data-open-app="whiteboard">Add a Quick Sticky ✍</button>
-    </section>
 
-    <!-- Column 2: Identity Hero Block -->
+      <div class="desktop-icon" data-app="systems" tabindex="0" role="button" title="Double-click to open Systems Architecture">
+        <img src="assets/icons/app-systems.svg" class="desktop-icon-img" alt="" />
+        <span class="desktop-icon-label">Systems</span>
+      </div>
+
+      <div class="desktop-icon" data-app="journey" tabindex="0" role="button" title="Double-click to open Journey Milestones">
+        <img src="assets/icons/app-journey.svg" class="desktop-icon-img" alt="" />
+        <span class="desktop-icon-label">Journey</span>
+      </div>
+
+      <div class="desktop-icon" data-app="achievements" tabindex="0" role="button" title="Double-click to open Achievements Vault">
+        <img src="assets/icons/app-achievements.svg" class="desktop-icon-img" alt="" />
+        <span class="desktop-icon-label">Achievements</span>
+      </div>
+
+      <div class="desktop-icon" data-app="founder" tabindex="0" role="button" title="Double-click to open Founder.txt">
+        <img src="assets/icons/app-founder.svg" class="desktop-icon-img" alt="" />
+        <span class="desktop-icon-label">Founder.txt</span>
+      </div>
+
+      <div class="desktop-icon" data-app="whiteboard" tabindex="0" role="button" title="Double-click to open Whiteboard (Sticky Notes)">
+        <img src="assets/icons/app-whiteboard.svg" class="desktop-icon-img" alt="" />
+        <span class="desktop-icon-label">Whiteboard</span>
+      </div>
+
+      <div class="desktop-icon" data-app="terminal" tabindex="0" role="button" title="Double-click to open Terminal Diagnostics">
+        <img src="assets/icons/app-terminal.svg" class="desktop-icon-img" alt="" />
+        <span class="desktop-icon-label">Terminal</span>
+      </div>
+
+      <div class="desktop-icon" data-app="contact" tabindex="0" role="button" title="Double-click to open Contact & Brief">
+        <img src="assets/icons/app-contact.svg" class="desktop-icon-img" alt="" />
+        <span class="desktop-icon-label">Contact</span>
+      </div>
+    </aside>
+
+    <!-- Center Column: Identity Hero Block -->
     <section class="desktop-hero">
       <div class="hero-roles">AI &amp; ML DEVELOPER // FULL-STACK // CREATIVE WEB</div>
       <h1 class="hero-name">SHIVANSH AGRAWAL</h1>
@@ -133,92 +163,39 @@
       </div>
     </section>
 
-    <!-- Column 3: Status & Credentials Overview -->
-    <section class="os-panel desktop-credentials">
-      <div class="panel-eyebrow">
-        <span>🏆</span>
-        <span>VERIFIED CREDENTIALS</span>
-      </div>
-      <div class="credential-item">
-        <div class="credential-title">Smart India Hackathon</div>
-        <p class="credential-desc">National competitor (2025–2026), developed full solution for PS SIH26135.</p>
-      </div>
-      <div class="credential-item">
-        <div class="credential-title">Economic Times AI Hackathon</div>
-        <p class="credential-desc">Round 2 Qualifier in competitive applied generative AI challenge.</p>
-      </div>
-      <div class="credential-item">
-        <div class="credential-title">GFG ByteQuest 2026</div>
-        <p class="credential-desc">Algorithmic and data structure problem solving participant.</p>
-      </div>
-    </section>
-
-    <!-- Desktop Icons Grid (Layer 0400) -->
-    <nav class="desktop-app-grid" aria-label="Desktop Applications">
-      <button class="desktop-app-item" data-open-app="projects" title="Open Projects">
-        <div class="app-icon-wrap">
-          <img src="assets/icons/app-projects.svg" alt="" />
+    <!-- Right Column: Daily Transmission & Credentials -->
+    <div class="desktop-widgets-col">
+      <section class="os-panel desktop-transmission">
+        <div class="panel-eyebrow">
+          <span>📡</span>
+          <span>DAILY TRANSMISSION</span>
         </div>
-        <span class="app-label">Projects</span>
-        <span class="app-sub">Main Drive</span>
-      </button>
+        <p class="transmission-text">
+          "Iteration outperforms speculation. Build the prototype, test the edge case, ship the proof."
+        </p>
+        <div class="transmission-meta">DISPATCH #042 // NAGPUR DEV LAB</div>
+        <button class="quick-sticky-btn" data-open-app="whiteboard">Add a Quick Sticky ✍</button>
+      </section>
 
-      <button class="desktop-app-item" data-open-app="systems" title="Open Systems Architecture">
-        <div class="app-icon-wrap">
-          <img src="assets/icons/app-systems.svg" alt="" />
+      <section class="os-panel desktop-credentials">
+        <div class="panel-eyebrow">
+          <span>🏆</span>
+          <span>VERIFIED CREDENTIALS</span>
         </div>
-        <span class="app-label">Systems</span>
-        <span class="app-sub">Engineering Loop</span>
-      </button>
-
-      <button class="desktop-app-item" data-open-app="journey" title="Open Journey Timeline">
-        <div class="app-icon-wrap">
-          <img src="assets/icons/app-journey.svg" alt="" />
+        <div class="credential-item">
+          <div class="credential-title">Smart India Hackathon</div>
+          <p class="credential-desc">National competitor (2025–2026), developed full solution for PS SIH26135.</p>
         </div>
-        <span class="app-label">Journey</span>
-        <span class="app-sub">2024 – 2026</span>
-      </button>
-
-      <button class="desktop-app-item" data-open-app="achievements" title="Open Achievements Vault">
-        <div class="app-icon-wrap">
-          <img src="assets/icons/app-achievements.svg" alt="" />
+        <div class="credential-item">
+          <div class="credential-title">Economic Times AI Hackathon</div>
+          <p class="credential-desc">Round 2 Qualifier in competitive applied generative AI challenge.</p>
         </div>
-        <span class="app-label">Achievements</span>
-        <span class="app-sub">Hackathons</span>
-      </button>
-
-      <button class="desktop-app-item" data-open-app="founder" title="Open Founder.txt">
-        <div class="app-icon-wrap">
-          <img src="assets/icons/app-founder.svg" alt="" />
+        <div class="credential-item">
+          <div class="credential-title">GFG ByteQuest 2026</div>
+          <p class="credential-desc">Algorithmic and data structure problem solving participant.</p>
         </div>
-        <span class="app-label">Founder.txt</span>
-        <span class="app-sub">Developer Log</span>
-      </button>
-
-      <button class="desktop-app-item" data-open-app="whiteboard" title="Open Whiteboard">
-        <div class="app-icon-wrap">
-          <img src="assets/icons/app-whiteboard.svg" alt="" />
-        </div>
-        <span class="app-label">Whiteboard</span>
-        <span class="app-sub">Sticky Notes</span>
-      </button>
-
-      <button class="desktop-app-item" data-open-app="terminal" title="Open Terminal">
-        <div class="app-icon-wrap">
-          <img src="assets/icons/app-terminal.svg" alt="" />
-        </div>
-        <span class="app-label">Terminal</span>
-        <span class="app-sub">Diagnostics</span>
-      </button>
-
-      <button class="desktop-app-item" data-open-app="contact" title="Open Contact Brief">
-        <div class="app-icon-wrap">
-          <img src="assets/icons/app-contact.svg" alt="" />
-        </div>
-        <span class="app-label">Contact</span>
-        <span class="app-sub">Direct Brief</span>
-      </button>
-    </nav>
+      </section>
+    </div>
 
   </main>
 
@@ -321,9 +298,9 @@
           <span>Projects — Main Drive (Selected Work)</span>
         </div>
         <div class="window-controls">
-          <button class="win-btn minimize" aria-label="Minimize"></button>
-          <button class="win-btn maximize" aria-label="Maximize"></button>
-          <button class="win-btn close" aria-label="Close"></button>
+          <button class="win-btn minimize" aria-label="Minimize" title="Minimize">−</button>
+          <button class="win-btn maximize" aria-label="Maximize" title="Maximize">□</button>
+          <button class="win-btn close" aria-label="Close" title="Close">×</button>
         </div>
       </div>
       <div class="window-content">
@@ -345,9 +322,9 @@
           <span>Systems — Engineering &amp; Operating Methodology</span>
         </div>
         <div class="window-controls">
-          <button class="win-btn minimize" aria-label="Minimize"></button>
-          <button class="win-btn maximize" aria-label="Maximize"></button>
-          <button class="win-btn close" aria-label="Close"></button>
+          <button class="win-btn minimize" aria-label="Minimize" title="Minimize">−</button>
+          <button class="win-btn maximize" aria-label="Maximize" title="Maximize">□</button>
+          <button class="win-btn close" aria-label="Close" title="Close">×</button>
         </div>
       </div>
       <div class="window-content">
@@ -385,9 +362,9 @@
           <span>Journey — Milestones &amp; Evolution</span>
         </div>
         <div class="window-controls">
-          <button class="win-btn minimize" aria-label="Minimize"></button>
-          <button class="win-btn maximize" aria-label="Maximize"></button>
-          <button class="win-btn close" aria-label="Close"></button>
+          <button class="win-btn minimize" aria-label="Minimize" title="Minimize">−</button>
+          <button class="win-btn maximize" aria-label="Maximize" title="Maximize">□</button>
+          <button class="win-btn close" aria-label="Close" title="Close">×</button>
         </div>
       </div>
       <div class="window-content">
@@ -406,9 +383,9 @@
           <span>Achievements — Hackathons &amp; Credentials</span>
         </div>
         <div class="window-controls">
-          <button class="win-btn minimize" aria-label="Minimize"></button>
-          <button class="win-btn maximize" aria-label="Maximize"></button>
-          <button class="win-btn close" aria-label="Close"></button>
+          <button class="win-btn minimize" aria-label="Minimize" title="Minimize">−</button>
+          <button class="win-btn maximize" aria-label="Maximize" title="Maximize">□</button>
+          <button class="win-btn close" aria-label="Close" title="Close">×</button>
         </div>
       </div>
       <div class="window-content">
@@ -427,9 +404,9 @@
           <span>Founder.txt — Developer Log</span>
         </div>
         <div class="window-controls">
-          <button class="win-btn minimize" aria-label="Minimize"></button>
-          <button class="win-btn maximize" aria-label="Maximize"></button>
-          <button class="win-btn close" aria-label="Close"></button>
+          <button class="win-btn minimize" aria-label="Minimize" title="Minimize">−</button>
+          <button class="win-btn maximize" aria-label="Maximize" title="Maximize">□</button>
+          <button class="win-btn close" aria-label="Close" title="Close">×</button>
         </div>
       </div>
       <div class="window-content">
@@ -452,9 +429,9 @@
           <span>Whiteboard — Sticky Notes Canvas</span>
         </div>
         <div class="window-controls">
-          <button class="win-btn minimize" aria-label="Minimize"></button>
-          <button class="win-btn maximize" aria-label="Maximize"></button>
-          <button class="win-btn close" aria-label="Close"></button>
+          <button class="win-btn minimize" aria-label="Minimize" title="Minimize">−</button>
+          <button class="win-btn maximize" aria-label="Maximize" title="Maximize">□</button>
+          <button class="win-btn close" aria-label="Close" title="Close">×</button>
         </div>
       </div>
       <div class="window-content">
@@ -480,9 +457,9 @@
           <span>Terminal — System Diagnostics</span>
         </div>
         <div class="window-controls">
-          <button class="win-btn minimize" aria-label="Minimize"></button>
-          <button class="win-btn maximize" aria-label="Maximize"></button>
-          <button class="win-btn close" aria-label="Close"></button>
+          <button class="win-btn minimize" aria-label="Minimize" title="Minimize">−</button>
+          <button class="win-btn maximize" aria-label="Maximize" title="Maximize">□</button>
+          <button class="win-btn close" aria-label="Close" title="Close">×</button>
         </div>
       </div>
       <div class="window-content" style="background:#10131A;padding:16px;">
@@ -512,9 +489,9 @@
           <span>Contact &amp; Project Brief</span>
         </div>
         <div class="window-controls">
-          <button class="win-btn minimize" aria-label="Minimize"></button>
-          <button class="win-btn maximize" aria-label="Maximize"></button>
-          <button class="win-btn close" aria-label="Close"></button>
+          <button class="win-btn minimize" aria-label="Minimize" title="Minimize">−</button>
+          <button class="win-btn maximize" aria-label="Maximize" title="Maximize">□</button>
+          <button class="win-btn close" aria-label="Close" title="Close">×</button>
         </div>
       </div>
       <div class="window-content">

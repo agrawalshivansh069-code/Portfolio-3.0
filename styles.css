@@ -354,12 +354,98 @@ html, body {
 #desktopShell {
   position: relative;
   z-index: 10;
-  min-height: 100dvh;
-  padding: 74px clamp(18px, 4vw, 54px) 130px;
+  min-height: calc(100dvh - 52px);
+  padding: 68px clamp(16px, 3vw, 36px) 100px;
   display: grid;
-  grid-template-columns: minmax(280px, 0.9fr) minmax(360px, 1.5fr) minmax(240px, 0.8fr);
-  grid-template-rows: auto auto 1fr;
-  gap: clamp(20px, 3vw, 40px);
+  grid-template-columns: 96px minmax(380px, 1.35fr) minmax(280px, 0.9fr);
+  gap: clamp(16px, 2.5vw, 32px);
+  align-items: start;
+}
+
+/* Left Column: Vertical Desktop Icons */
+.desktop-icons-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 25;
+  user-select: none;
+  max-height: calc(100dvh - 170px);
+  flex-wrap: wrap;
+}
+
+.desktop-icon {
+  width: 88px;
+  padding: 8px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+
+.desktop-icon:hover {
+  background: rgba(255, 255, 255, 0.45);
+  border-color: rgba(29, 30, 44, 0.2);
+}
+
+[data-theme="night"] .desktop-icon:hover,
+[data-theme="dark"] .desktop-icon:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.desktop-icon.is-selected {
+  background: rgba(126, 231, 226, 0.35) !important;
+  border: 1px dashed var(--ink) !important;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+}
+
+[data-theme="night"] .desktop-icon.is-selected,
+[data-theme="dark"] .desktop-icon.is-selected {
+  background: rgba(200, 179, 255, 0.3) !important;
+  border: 1px dashed var(--accent) !important;
+}
+
+.desktop-icon-img {
+  width: 44px;
+  height: 44px;
+  image-rendering: pixelated;
+  margin-bottom: 5px;
+  pointer-events: none;
+}
+
+.desktop-icon-label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.85);
+  word-break: break-word;
+  pointer-events: none;
+}
+
+[data-theme="night"] .desktop-icon-label,
+[data-theme="dark"] .desktop-icon-label {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95);
+}
+
+/* Center Column: Hero Block */
+.desktop-hero {
+  align-self: start;
+  padding-top: clamp(6px, 2vh, 20px);
+}
+
+/* Right Column: Widgets Stack */
+.desktop-widgets-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* OS Generic Panels */
@@ -386,10 +472,9 @@ html, body {
   gap: 6px;
 }
 
-/* Column 1: Daily Transmission */
+/* Daily Transmission */
 .desktop-transmission {
-  grid-column: 1;
-  align-self: start;
+  width: 100%;
 }
 
 .transmission-text {
@@ -430,14 +515,6 @@ html, body {
   box-shadow: 2px 2px 0 var(--ink);
 }
 
-/* Column 2: Identity Hero Block */
-.desktop-hero {
-  grid-column: 2;
-  grid-row: 1 / span 2;
-  align-self: start;
-  padding-top: clamp(10px, 3vh, 30px);
-}
-
 .hero-roles {
   font-family: 'DM Mono', monospace;
   font-size: 12px;
@@ -449,7 +526,7 @@ html, body {
 }
 
 .hero-name {
-  font-size: clamp(40px, 5.5vw, 76px);
+  font-size: clamp(38px, 5vw, 70px);
   font-weight: 800;
   line-height: 0.98;
   letter-spacing: -0.05em;
@@ -531,10 +608,9 @@ html, body {
   color: var(--paper);
 }
 
-/* Column 3: Status & Credentials Overview */
+/* Credentials Overview */
 .desktop-credentials {
-  grid-column: 3;
-  align-self: start;
+  width: 100%;
 }
 
 .credential-item {
@@ -937,20 +1013,60 @@ html, body {
   display: flex;
   align-items: center;
   gap: 6px;
+  margin-left: auto;
 }
 
 .win-btn {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  border-radius: 3px;
   border: 1px solid var(--ink);
   padding: 0;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  transition: transform 0.08s ease, background 0.12s ease;
+  user-select: none;
 }
 
-.win-btn.close { background: #FF5E7E; }
-.win-btn.minimize { background: #FFD166; }
-.win-btn.maximize { background: #06D6A0; }
+.win-btn:active {
+  transform: scale(0.90);
+}
+
+.win-btn.close {
+  background: #FF5E7E;
+  color: #1D1E2C;
+}
+
+.win-btn.close:hover {
+  background: #E02424;
+  color: #FFFFFF;
+}
+
+.win-btn.minimize {
+  background: #FFD166;
+  color: #1D1E2C;
+}
+
+.win-btn.minimize:hover {
+  background: #E0A800;
+  color: #1D1E2C;
+}
+
+.win-btn.maximize {
+  background: #06D6A0;
+  color: #1D1E2C;
+}
+
+.win-btn.maximize:hover {
+  background: #059669;
+  color: #FFFFFF;
+}
 
 .window-content {
   flex: 1;
@@ -1249,22 +1365,27 @@ html, body {
    RESPONSIVE REFLOW STRATEGY (Desktop -> Tablet -> Phone)
 ======================================================== */
 
-@media (max-width: 1080px) {
+@media (max-width: 1080px) and (min-width: 721px) {
   #desktopShell {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    padding-top: 70px;
+    grid-template-columns: 96px 1fr;
+    grid-template-rows: auto auto;
+    padding-top: 64px;
+    gap: 20px;
+  }
+  .desktop-icons-col {
+    grid-column: 1;
+    grid-row: 1 / span 2;
   }
   .desktop-hero {
-    grid-column: 1 / -1;
-    grid-row: auto;
-    padding-top: 0;
-  }
-  .desktop-transmission {
-    grid-column: 1;
-  }
-  .desktop-credentials {
     grid-column: 2;
+    grid-row: 1;
+  }
+  .desktop-widgets-col {
+    grid-column: 2;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
   }
 }
 
@@ -1278,23 +1399,35 @@ html, body {
   #desktopShell {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    padding: 64px 16px 120px;
+    gap: 20px;
+    padding: 60px 14px 110px;
+  }
+  .desktop-hero {
+    order: 1;
+  }
+  .desktop-icons-col {
+    order: 2;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    width: 100%;
+    max-height: none;
+  }
+  .desktop-icon {
+    width: 100%;
+    padding: 6px 2px;
+  }
+  .desktop-widgets-col {
+    order: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
   .hero-name {
     font-size: clamp(34px, 11vw, 52px);
   }
   .hero-intro {
     font-size: 15px;
-  }
-  .desktop-app-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-  .desktop-app-item {
-    padding: 10px;
-    background: var(--panel);
-    border: 1px solid var(--line);
   }
   #aiCompanion {
     bottom: 74px;

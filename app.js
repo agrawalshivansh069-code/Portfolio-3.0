@@ -14,6 +14,7 @@ import { journeyData } from './content/journey.js';
 const OS_STATE = {
   theme: localStorage.getItem('shivansh-os-theme') || 'day',
   activeWindows: new Set(),
+  minimizedWindows: new Set(),
   topZIndex: 1000,
   audioEnabled: localStorage.getItem('shivansh-os-audio') === 'true',
   companionStateIndex: 0,
@@ -253,31 +254,45 @@ function initWindowManager() {
     const minBtn = win.querySelector('.win-btn.minimize');
     const maxBtn = win.querySelector('.win-btn.maximize');
 
-    // Focus on click
-    win.addEventListener('pointerdown', () => focusWindow(winId));
+    // Clicking anywhere on window brings it to foreground
+    win.addEventListener('pointerdown', (e) => {
+      // Don't interfere if interacting with form inputs
+      focusWindow(winId);
+    });
 
-    // Close button
+    // Close button - immediately closes window and stops propagation
     if (closeBtn) {
+      ['pointerdown', 'mousedown'].forEach((evt) => {
+        closeBtn.addEventListener(evt, (e) => e.stopPropagation());
+      });
       closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
         e.stopPropagation();
         closeWindow(winId);
-      });
-    }
-
-    // Maximize button
-    if (maxBtn) {
-      maxBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        win.classList.toggle('is-maximized');
-        playChirp(460, 0.05);
       });
     }
 
     // Minimize button
     if (minBtn) {
+      ['pointerdown', 'mousedown'].forEach((evt) => {
+        minBtn.addEventListener(evt, (e) => e.stopPropagation());
+      });
       minBtn.addEventListener('click', (e) => {
+        e.preventDefault();
         e.stopPropagation();
-        closeWindow(winId);
+        minimizeWindow(winId);
+      });
+    }
+
+    // Maximize / Restore button
+    if (maxBtn) {
+      ['pointerdown', 'mousedown'].forEach((evt) => {
+        maxBtn.addEventListener(evt, (e) => e.stopPropagation());
+      });
+      maxBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleMaximize(winId);
       });
     }
 
@@ -287,8 +302,24 @@ function initWindowManager() {
     }
   });
 
-  // Dock & App launchers
-  document.querySelectorAll('[data-open-app]').forEach((trigger) => {
+  // Dock items interaction (Single click opens, restores, or toggles minimize)
+  document.querySelectorAll('.dock-item[data-open-app]').forEach((dockBtn) => {
+    dockBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const appId = dockBtn.getAttribute('data-open-app');
+      const winId = `win-${appId}`;
+      const win = document.getElementById(winId);
+
+      if (OS_STATE.activeWindows.has(winId) && !OS_STATE.minimizedWindows.has(winId) && win && win.classList.contains('is-focused')) {
+        minimizeWindow(winId);
+      } else {
+        openWindow(winId);
+      }
+    });
+  });
+
+  // Hero action buttons and quick links
+  document.querySelectorAll('[data-open-app]:not(.dock-item):not(.desktop-icon)').forEach((trigger) => {
     trigger.addEventListener('click', (e) => {
       e.preventDefault();
       const appId = trigger.getAttribute('data-open-app');
@@ -304,7 +335,11 @@ function initWindowManager() {
         closeCommandPalette();
         return;
       }
-      if (OS_STATE.activeWindows.size > 0) {
+      // Close the currently focused window
+      const focusedWin = document.querySelector('.os-window.is-focused');
+      if (focusedWin && focusedWin.style.display !== 'none') {
+        closeWindow(focusedWin.id);
+      } else if (OS_STATE.activeWindows.size > 0) {
         const topWinId = Array.from(OS_STATE.activeWindows).pop();
         if (topWinId) closeWindow(topWinId);
       }
@@ -312,27 +347,48 @@ function initWindowManager() {
   });
 }
 
+/* Open an application window */
 function openWindow(winId) {
   const win = document.getElementById(winId);
   if (!win) return;
 
+  // If already open and visible, bring to front and focus
+  if (OS_STATE.activeWindows.has(winId) && !OS_STATE.minimizedWindows.has(winId) && win.style.display !== 'none') {
+    focusWindow(winId);
+    playChirp(460, 0.04);
+    return;
+  }
+
+  // If minimized, restore it
+  if (OS_STATE.minimizedWindows.has(winId)) {
+    OS_STATE.minimizedWindows.delete(winId);
+  }
+
   win.style.display = 'flex';
   win.removeAttribute('hidden');
-  focusWindow(winId);
 
-  // Position nicely if first opened
-  if (!win.dataset.positioned && window.innerWidth > 768) {
-    const offset = (OS_STATE.activeWindows.size % 6) * 25;
-    win.style.top = `${80 + offset}px`;
-    win.style.left = `${Math.max(20, Math.min(window.innerWidth - 720, 160 + offset))}px`;
+  // Position centered on desktop with staggered cascade if first opened
+  if (!win.dataset.positioned && window.innerWidth > 768 && !win.classList.contains('is-maximized')) {
+    const winWidth = parseInt(win.style.width, 10) || 720;
+    const winHeight = parseInt(win.style.height, 10) || 480;
+    const centerLeft = Math.max(110, Math.round((window.innerWidth - winWidth) / 2));
+    const centerTop = Math.max(68, Math.round((window.innerHeight - winHeight) / 2) - 30);
+    const step = (OS_STATE.activeWindows.size % 5);
+    const cascadeLeft = step * 32 - 40;
+    const cascadeTop = step * 36 - 40;
+
+    win.style.left = `${Math.max(110, centerLeft + cascadeLeft)}px`;
+    win.style.top = `${Math.max(68, centerTop + cascadeTop)}px`;
     win.dataset.positioned = 'true';
   }
 
   OS_STATE.activeWindows.add(winId);
+  focusWindow(winId);
   updateDockIndicators();
   playChirp(440, 0.06);
 }
 
+/* Close an application window immediately */
 function closeWindow(winId) {
   const win = document.getElementById(winId);
   if (!win) return;
@@ -341,10 +397,68 @@ function closeWindow(winId) {
   win.setAttribute('hidden', 'true');
   win.classList.remove('is-focused');
   OS_STATE.activeWindows.delete(winId);
+  OS_STATE.minimizedWindows.delete(winId);
   updateDockIndicators();
   playChirp(380, 0.05);
+
+  // Focus the topmost remaining active window that is not minimized
+  const remaining = Array.from(OS_STATE.activeWindows).filter((id) => !OS_STATE.minimizedWindows.has(id));
+  if (remaining.length > 0) {
+    focusWindow(remaining[remaining.length - 1]);
+  }
 }
 
+/* Minimize an application window */
+function minimizeWindow(winId) {
+  const win = document.getElementById(winId);
+  if (!win) return;
+
+  win.style.display = 'none';
+  win.classList.remove('is-focused');
+  OS_STATE.minimizedWindows.add(winId);
+  updateDockIndicators();
+  playChirp(340, 0.05);
+
+  const remaining = Array.from(OS_STATE.activeWindows).filter((id) => !OS_STATE.minimizedWindows.has(id));
+  if (remaining.length > 0) {
+    focusWindow(remaining[remaining.length - 1]);
+  }
+}
+
+/* Maximize / Restore an application window */
+function toggleMaximize(winId) {
+  const win = document.getElementById(winId);
+  if (!win) return;
+
+  const maxBtn = win.querySelector('.win-btn.maximize');
+
+  if (win.classList.contains('is-maximized')) {
+    win.classList.remove('is-maximized');
+    win.style.top = win.dataset.prevTop || '74px';
+    win.style.left = win.dataset.prevLeft || '120px';
+    win.style.width = win.dataset.prevWidth || '720px';
+    win.style.height = win.dataset.prevHeight || '480px';
+    if (maxBtn) {
+      maxBtn.textContent = '□';
+      maxBtn.title = 'Maximize';
+    }
+  } else {
+    win.dataset.prevTop = win.style.top;
+    win.dataset.prevLeft = win.style.left;
+    win.dataset.prevWidth = win.style.width;
+    win.dataset.prevHeight = win.style.height;
+
+    win.classList.add('is-maximized');
+    if (maxBtn) {
+      maxBtn.textContent = '❐';
+      maxBtn.title = 'Restore';
+    }
+  }
+  focusWindow(winId);
+  playChirp(460, 0.05);
+}
+
+/* Bring a window to foreground with correct z-index */
 function focusWindow(winId) {
   const win = document.getElementById(winId);
   if (!win) return;
@@ -355,31 +469,47 @@ function focusWindow(winId) {
   document.querySelectorAll('.os-window').forEach((w) => w.classList.remove('is-focused'));
   win.classList.add('is-focused');
 
+  // Maintain focus ordering in active set
   OS_STATE.activeWindows.delete(winId);
   OS_STATE.activeWindows.add(winId);
 }
 
+/* Update dock indicator dots */
 function updateDockIndicators() {
   document.querySelectorAll('.dock-item[data-open-app]').forEach((dockBtn) => {
     const appId = dockBtn.getAttribute('data-open-app');
     const winId = `win-${appId}`;
     if (OS_STATE.activeWindows.has(winId)) {
       dockBtn.classList.add('has-open-window');
+      if (OS_STATE.minimizedWindows.has(winId)) {
+        dockBtn.style.opacity = '0.65';
+      } else {
+        dockBtn.style.opacity = '1';
+      }
     } else {
       dockBtn.classList.remove('has-open-window');
+      dockBtn.style.opacity = '1';
     }
   });
 }
 
+/* Make a window draggable by its titlebar safely without blocking button clicks */
 function makeDraggable(element, handle) {
   let isDragging = false;
   let startX = 0, startY = 0;
   let initialLeft = 0, initialTop = 0;
 
   handle.addEventListener('pointerdown', (e) => {
+    // CRITICAL: If clicking on close, minimize, maximize, or any button, DO NOT DRAG!
+    if (e.target.closest('.window-controls') || e.target.closest('button')) {
+      return;
+    }
     if (window.innerWidth <= 720 || element.classList.contains('is-maximized')) return;
+
     isDragging = true;
-    handle.setPointerCapture(e.pointerId);
+    try {
+      handle.setPointerCapture(e.pointerId);
+    } catch (_) {}
 
     const rect = element.getBoundingClientRect();
     startX = e.clientX;
@@ -399,7 +529,7 @@ function makeDraggable(element, handle) {
     let newTop = initialTop + dy;
 
     // Bounds checking
-    newLeft = Math.max(8, Math.min(window.innerWidth - 120, newLeft));
+    newLeft = Math.max(10, Math.min(window.innerWidth - 120, newLeft));
     newTop = Math.max(54, Math.min(window.innerHeight - 80, newTop));
 
     element.style.left = `${newLeft}px`;
@@ -407,11 +537,77 @@ function makeDraggable(element, handle) {
     element.style.transform = 'none';
   });
 
-  handle.addEventListener('pointerup', (e) => {
+  function stopDrag(e) {
     if (isDragging) {
       isDragging = false;
-      try { handle.releasePointerCapture(e.pointerId); } catch (_) {}
+      try {
+        handle.releasePointerCapture(e.pointerId);
+      } catch (_) {}
     }
+  }
+
+  handle.addEventListener('pointerup', stopDrag);
+  handle.addEventListener('pointercancel', stopDrag);
+}
+
+/* ========================================================
+   6B. DESKTOP APPLICATION ICONS (Left-Side Windows Style)
+======================================================== */
+function initDesktopIcons() {
+  const icons = document.querySelectorAll('.desktop-icon');
+
+  icons.forEach((icon) => {
+    const appId = icon.getAttribute('data-app');
+    const winId = `win-${appId}`;
+    let lastClickTime = 0;
+
+    // Click handler: selects icon, and rapid double-click opens application
+    icon.addEventListener('click', (e) => {
+      e.stopPropagation();
+      selectDesktopIcon(icon);
+
+      const now = Date.now();
+      const isDoubleClick = (now - lastClickTime) < 450 || e.detail >= 2;
+      lastClickTime = now;
+
+      // Open on double-click on desktop, or single tap on mobile / touch devices
+      if (isDoubleClick || window.innerWidth <= 720 || ('ontouchstart' in window && navigator.maxTouchPoints > 0)) {
+        openWindow(winId);
+      }
+    });
+
+    // Native dblclick event listener as secondary guarantee
+    icon.addEventListener('dblclick', (e) => {
+      e.stopPropagation();
+      openWindow(winId);
+    });
+
+    // Keyboard support: Enter or Space opens application
+    icon.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openWindow(winId);
+      }
+    });
+  });
+
+  // Clicking anywhere on the desktop deselects icons
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.desktop-icon')) {
+      deselectAllDesktopIcons();
+    }
+  });
+}
+
+function selectDesktopIcon(iconEl) {
+  deselectAllDesktopIcons();
+  iconEl.classList.add('is-selected');
+  playChirp(520, 0.03);
+}
+
+function deselectAllDesktopIcons() {
+  document.querySelectorAll('.desktop-icon.is-selected').forEach((el) => {
+    el.classList.remove('is-selected');
   });
 }
 
@@ -827,6 +1023,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initParticleCanvas();
   initBootloader();
   initWindowManager();
+  initDesktopIcons();
   initCompanion();
   initWhiteboard();
   initCommandPalette();
